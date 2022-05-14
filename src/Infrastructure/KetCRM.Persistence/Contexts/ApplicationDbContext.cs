@@ -1,5 +1,6 @@
 ﻿using KetCRM.Application.Common.Interfaces;
 using KetCRM.Domain.Entities;
+using KetCRM.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,16 @@ namespace KetCRM.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.ApplyConfiguration(new AddressConfiguration());
+            builder.ApplyConfiguration(new DepartmentConfiguration());
+            builder.ApplyConfiguration(new GroupConfiguration());
+            builder.ApplyConfiguration(new ParentConfiguration());
+            builder.ApplyConfiguration(new RepresentativeConfiguration());
+            builder.ApplyConfiguration(new SchoolTypeConfiguration());
+            builder.ApplyConfiguration(new SpecializationConfiguration());
+            builder.ApplyConfiguration(new StudentConfiguration());
+            builder.ApplyConfiguration(new TeacherConfiguration());
+
             base.OnModelCreating(builder);
         }
 
