@@ -1,3 +1,4 @@
+using KetCRM.Application.Extensions;
 using KetCRM.Persistence;
 using KetCRM.Persistence.Contexts;
 using KetCRM.Persistence.Extensions;
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence(config);
+builder.Services.AddApplication()
 
 var app = builder.Build();
 
