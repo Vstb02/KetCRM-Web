@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\KetCRM.Persistence\KetCRM.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
