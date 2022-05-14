@@ -31,7 +31,7 @@ namespace KetCRM.Domain.Entities
         /// <summary>
         /// Пол
         /// </summary>
-        public int? Gender { get; set; }
+        public Genderp Gender { get; set; }
         /// <summary>
         /// Дата рождения
         /// </summary>
