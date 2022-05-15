@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence(config);
-builder.Services.AddApplication()
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
