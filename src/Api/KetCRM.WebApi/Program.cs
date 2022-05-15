@@ -2,9 +2,18 @@ using KetCRM.Application.Extensions;
 using KetCRM.Persistence;
 using KetCRM.Persistence.Contexts;
 using KetCRM.Persistence.Extensions;
+using KetCRM.Shared.Extensions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
+
+builder.Logging.ClearProviders();
+var loggerConfig = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateLogger();
+builder.Logging.AddSerilog(loggerConfig);
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -14,6 +23,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence(config);
 builder.Services.AddApplication();
+builder.Services.AddShared();
 
 var app = builder.Build();
 
@@ -28,7 +38,7 @@ using (var serviceScope = app.Services.CreateScope())
     }
     catch (Exception exception)
     {
-
+        Log.Error(exception, "Не удлось добавить базу данных");
     }
 }
 
