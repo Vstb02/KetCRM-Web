@@ -9,6 +9,8 @@ namespace KetCRM.Application.Common.Mapping
         public MappingProfile()
         {
             CreateMap<CreatePersonDto, Person>();
+            CreateMap<UpdatePersonDto, Person>();
+            CreateMap<PersonDto, Person>().ReverseMap();
         }
     }
 }

@@ -8,6 +8,6 @@ namespace KetCRM.Application.Models.Persons
 {
     public class PersonListDto
     {
-        public List<PersonDto> PersonList = new List<PersonDto>();
+        public IList<PersonDto> PersonList { get; set; } = new List<PersonDto>();
     }
 }

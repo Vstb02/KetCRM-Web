@@ -13,7 +13,7 @@ namespace KetCRM.Application.Common.Interfaces.Persons
         Task<PersonDto> GetPersonById(Guid PersonId);
         Task<PersonListDto> GetAllPerson();
         Task<Guid> CreatePerson(CreatePersonDto personDto);
-        Task<Guid> UpdatePerson(UpdatePersonDto personDto);
+        Task<Guid> UpdatePerson(UpdatePersonDto personDto, Guid PersonId);
         Task<Guid> DeletePerson(Guid PersonId);
     }
 }

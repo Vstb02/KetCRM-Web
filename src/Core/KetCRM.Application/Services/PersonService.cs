@@ -5,6 +5,7 @@ using KetCRM.Application.Common.Interfaces.Persons;
 using KetCRM.Application.Models;
 using KetCRM.Application.Models.Persons;
 using KetCRM.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -52,17 +53,44 @@ namespace KetCRM.Application.Services
 
         public async Task<PersonListDto> GetAllPerson()
         {
-            throw new NotImplementedException();
+            var person = await _context.Persons.ToListAsync();
+
+            PersonListDto personList = new PersonListDto();
+
+            foreach (var Item in person)
+            {
+                personList.PersonList.Add(_mapper.Map<PersonDto>(Item));
+            }
+
+            return personList;
         }
 
         public async Task<PersonDto> GetPersonById(Guid PersonId)
         {
-            throw new NotImplementedException();
+            var person = await _context.Persons.FindAsync(PersonId);
+
+            if (person == null)
+            {
+                throw new NotFoundException(nameof(Person), PersonId);
+            }
+
+            var personDto = _mapper.Map<PersonDto>(person);
+
+            return personDto;
         }
 
-        public async Task<Guid> UpdatePerson(UpdatePersonDto personDto)
+        public async Task<Guid> UpdatePerson(UpdatePersonDto personDto, Guid PersonId)
         {
-            throw new NotImplementedException();
+            var person = await _context.Persons.FindAsync(PersonId);
+
+            if (person == null)
+            {
+                throw new NotFoundException(nameof(Person), PersonId);
+            }
+
+            var newPerson = _mapper.Map<Person>(personDto);
+
+            return person.Id;
         }
     }
 }
