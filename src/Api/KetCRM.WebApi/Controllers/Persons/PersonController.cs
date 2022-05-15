@@ -32,6 +32,12 @@ namespace KetCRM.WebApi.Controllers.Persons
                 return StatusCode(500);
             }
         }
+
+        /// <summary>
+        /// Удаление пользователя
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns>Возвращает id удаленного пользователя</returns>
         [HttpDelete("DeletePerson/{Id}")]
         public async Task<IActionResult> DeletePerson(Guid Id)
         {
