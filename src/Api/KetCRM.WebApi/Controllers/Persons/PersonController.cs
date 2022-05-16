@@ -8,10 +8,13 @@ namespace KetCRM.WebApi.Controllers.Persons
     public class PersonController : ApiControllerBase
     {
         private readonly IPersonService _personService;
+        private readonly ILogger<PersonController> _logger;
 
-        public PersonController(IPersonService personService)
+        public PersonController(IPersonService personService,
+            ILogger<PersonController> logger)
         {
             _personService = personService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -30,7 +33,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             }
             catch (Exception ex)
             {
-                Log.Error(ex.Message);
+                _logger.LogError(ex.Message);
                 return StatusCode(500);
             }
         }
@@ -51,7 +54,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             }
             catch (Exception ex)
             {
-                Log.Error(ex.Message);
+                _logger.LogError(ex.Message);
                 return StatusCode(500);
             }
         }
@@ -73,7 +76,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             }
             catch (Exception ex)
             {
-                Log.Error(ex.Message);
+                _logger.LogError(ex.Message);
                 return StatusCode(500);
             }
         }
@@ -93,7 +96,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             }
             catch (Exception ex)
             {
-                Log.Error(ex.Message);
+                _logger.LogError(ex.Message);
                 return StatusCode(500);
             }
         }
@@ -114,7 +117,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             }
             catch (Exception ex)
             {
-                Log.Error(ex.Message);
+                _logger.LogError(ex.Message);
                 return StatusCode(500);
             }
         }

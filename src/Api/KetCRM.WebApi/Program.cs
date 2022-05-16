@@ -2,7 +2,6 @@ using KetCRM.Application.Extensions;
 using KetCRM.Persistence;
 using KetCRM.Persistence.Contexts;
 using KetCRM.Persistence.Extensions;
-using KetCRM.Shared.Extensions;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,7 +22,6 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddPersistence(config);
 builder.Services.AddApplication();
-builder.Services.AddShared();
 
 var app = builder.Build();
 
