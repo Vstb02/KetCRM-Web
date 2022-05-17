@@ -6,26 +6,33 @@ using System.Threading.Tasks;
 
 namespace KetCRM.Application.Models
 {
-    public class Result
+    public class Result<T>
     {
-        internal Result(bool succeeded, IEnumerable<string> errors)
-        {
-            Succeeded = succeeded;
-            Errors = errors.ToArray();
-        }
-
+        public T? Value { get; set; }
+        public string? Message { get; set; }
         public bool Succeeded { get; set; }
 
-        public string[] Errors { get; set; }
-
-        public static Result Success()
+        internal Result(T value)
         {
-            return new Result(true, Array.Empty<string>());
+            Value = value;
+            Succeeded = true;
         }
 
-        public static Result Failure(IEnumerable<string> errors)
+        internal Result(string message)
         {
-            return new Result(false, errors);
+            Value = default(T);
+            Message = message;
+            Succeeded = false;
+        }
+
+        public static Result<T> Success(T value)
+        {
+            return new Result<T>(value);
+        }
+
+        public static Result<T> Failure(string errors)
+        {
+            return new Result<T>(errors);
         }
     }
 }
