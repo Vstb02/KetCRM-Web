@@ -6,6 +6,7 @@ using KetCRM.Application.Models;
 using KetCRM.Application.Models.Persons;
 using KetCRM.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -19,41 +20,51 @@ namespace KetCRM.Application.Services
     {
         private readonly IApplicationDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogger<PersonService> _logger;
         public PersonService(IApplicationDbContext context, 
-            IMapper mapper)
+            IMapper mapper,
+            ILogger<PersonService> logger)
         {
             _context = context;
             _mapper = mapper;
+            _logger = logger;
         }
-        public async Task<Guid> CreatePerson(CreatePersonDto personDto)
+        public async Task<Result<Guid>> CreatePerson(CreatePersonDto personDto)
         {
             var person = _mapper.Map<Person>(personDto);
 
             await _context.Persons.AddAsync(person);
             await _context.SaveChangesAsync();
 
-            return person.Id;
+            return Result<Guid>.Success(person.Id);
         }
 
-        public async Task<Guid> DeletePerson(Guid PersonId)
+        public async Task<Result<Guid>> DeletePerson(Guid PersonId)
         {
             var person = await _context.Persons.FindAsync(PersonId);
 
             if (person == null)
             {
-                throw new NotFoundException(nameof(Person), PersonId);
+                _logger.LogWarning($"Сущность \"{nameof(Person)}\" ({PersonId}) не найдена.");
+                return Result<Guid>.Failure($"Пользователь не найден");
             }
 
             _context.Persons.Remove(person);
 
             await _context.SaveChangesAsync();
 
-            return PersonId;
+            return Result<Guid>.Success(person.Id);
         }
 
-        public async Task<PersonListDto> GetAllPerson()
+        public async Task<Result<PersonListDto>> GetAllPerson()
         {
             var person = await _context.Persons.ToListAsync();
+
+            if (person == null)
+            {
+                _logger.LogWarning($"Список {nameof(PersonListDto)} не найден");
+                return Result<PersonListDto>.Failure($"Ничего не найдено");
+            }
 
             PersonListDto personList = new PersonListDto();
 
@@ -62,35 +73,40 @@ namespace KetCRM.Application.Services
                 personList.PersonList.Add(_mapper.Map<PersonDto>(Item));
             }
 
-            return personList;
+            return Result<PersonListDto>.Success(personList);
         }
 
-        public async Task<PersonDto> GetPersonById(Guid PersonId)
+        public async Task<Result<PersonDto>> GetPersonById(Guid PersonId)
         {
             var person = await _context.Persons.FindAsync(PersonId);
 
             if (person == null)
             {
-                throw new NotFoundException(nameof(Person), PersonId);
+                _logger.LogWarning($"Сущность \"{nameof(Person)}\" ({PersonId}) не найдена.");
+                return Result<PersonDto>.Failure($"Пользователь не найден");
             }
 
             var personDto = _mapper.Map<PersonDto>(person);
 
-            return personDto;
+            return Result<PersonDto>.Success(personDto);
         }
 
-        public async Task<Guid> UpdatePerson(UpdatePersonDto personDto, Guid PersonId)
+        public async Task<Result<Guid>> UpdatePerson(UpdatePersonDto personDto, Guid PersonId)
         {
             var person = await _context.Persons.FindAsync(PersonId);
 
             if (person == null)
             {
-                throw new NotFoundException(nameof(Person), PersonId);
+                _logger.LogWarning($"Сущность \"{nameof(Person)}\" ({PersonId}) не найдена.");
+                return Result<Guid>.Failure($"Пользователь не найден");
             }
 
             var newPerson = _mapper.Map<Person>(personDto);
 
-            return person.Id;
+            _context.Persons.Update(newPerson);
+            await _context.SaveChangesAsync();
+
+            return Result<Guid>.Success(newPerson.Id);
         }
     }
 }

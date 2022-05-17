@@ -10,10 +10,10 @@ namespace KetCRM.Application.Common.Interfaces.Persons
 {
     public interface IPersonService
     {
-        Task<PersonDto> GetPersonById(Guid PersonId);
-        Task<PersonListDto> GetAllPerson();
-        Task<Guid> CreatePerson(CreatePersonDto personDto);
-        Task<Guid> UpdatePerson(UpdatePersonDto personDto, Guid PersonId);
-        Task<Guid> DeletePerson(Guid PersonId);
+        Task<Result<PersonDto>> GetPersonById(Guid PersonId);
+        Task<Result<PersonListDto>> GetAllPerson();
+        Task<Result<Guid>> CreatePerson(CreatePersonDto personDto);
+        Task<Result<Guid>> UpdatePerson(UpdatePersonDto personDto, Guid PersonId);
+        Task<Result<Guid>> DeletePerson(Guid PersonId);
     }
 }

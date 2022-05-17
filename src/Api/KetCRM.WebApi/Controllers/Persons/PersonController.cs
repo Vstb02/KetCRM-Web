@@ -34,7 +34,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return StatusCode(500);
+                return StatusCode(500, "Произошла ошибка при попытке создать пользователя");
             }
         }
 
@@ -55,7 +55,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return StatusCode(500);
+                return StatusCode(500, "Произошла обшибка при попытке удалить пользователя");
             }
         }
 
@@ -77,7 +77,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return StatusCode(500);
+                return StatusCode(500, "Произошла ошибка при попытке обновления данных пользователя");
             }
         }
 
@@ -97,7 +97,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return StatusCode(500);
+                return StatusCode(500, "Произошла ошибка при попытке получения данные пользователей");
             }
         }
 
@@ -118,7 +118,7 @@ namespace KetCRM.WebApi.Controllers.Persons
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return StatusCode(500);
+                return StatusCode(500, "Произошла ошибка при попоытке получения данных пользователя");
             }
         }
     }
