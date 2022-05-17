@@ -44,7 +44,7 @@ namespace KetCRM.Domain.Entities
         /// <summary>
         /// Id отделения
         /// </summary>
-        public Guid? DepartamentId { get; set; }
+        public Guid? DepartmentId { get; set; }
         /// <summary>
         /// Отделение группы
         /// </summary>
