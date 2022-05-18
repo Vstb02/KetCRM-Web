@@ -17,7 +17,7 @@ namespace KetCRM.Application.Common.Interfaces
         DbSet<Person> Persons { get; set; }
         DbSet<Representative> Representatives { get; set; }
         DbSet<SchoolType> SchoolTypes { get; set; }
-        DbSet<Specialization> specializations { get; set; }
+        DbSet<Specialization> Specializations { get; set; }
         DbSet<Student> Students { get; set; }
         DbSet<Teacher> Teachers { get; set; }
         Task<int> SaveChangesAsync();

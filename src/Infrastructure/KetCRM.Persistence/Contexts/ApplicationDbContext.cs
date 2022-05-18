@@ -19,7 +19,7 @@ namespace KetCRM.Persistence.Contexts
         public DbSet<Person> Persons { get; set; } = null!;
         public DbSet<Representative> Representatives { get; set; } = null!;
         public DbSet<SchoolType> SchoolTypes { get; set; } = null!;
-        public DbSet<Specialization> specializations { get; set; } = null!;
+        public DbSet<Specialization> Specializations { get; set; } = null!;
         public DbSet<Student> Students { get; set; } = null!;
         public DbSet<Teacher> Teachers { get; set; } = null!;
 
