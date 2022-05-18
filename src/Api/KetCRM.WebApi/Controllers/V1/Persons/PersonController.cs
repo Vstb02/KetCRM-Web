@@ -119,7 +119,7 @@ namespace KetCRM.WebApi.Controllers.V1.Persons
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попоытке получения данных пользователя");
+                return StatusCode(500, "Произошла ошибка при попоытке получения данные пользователя");
             }
         }
     }
