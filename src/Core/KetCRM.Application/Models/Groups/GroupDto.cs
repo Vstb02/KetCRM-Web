@@ -14,6 +14,10 @@ namespace KetCRM.Application.Models.Groups
     public class GroupDto
     {
         /// <summary>
+        /// Идентификатор
+        /// </summary>
+        public Guid Id { get; set; }
+        /// <summary>
         /// Номер курса
         /// </summary>
         public string? CourseNumber { get; set; }

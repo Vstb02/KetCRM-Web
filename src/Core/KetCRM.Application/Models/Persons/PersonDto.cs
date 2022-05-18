@@ -10,6 +10,10 @@ namespace KetCRM.Application.Models.Persons
     public class PersonDto
     {
         /// <summary>
+        /// Идентификатор
+        /// </summary>
+        public Guid Id { get; set; }
+        /// <summary>
         /// Имя
         /// </summary>
         public string? Name { get; set; }
