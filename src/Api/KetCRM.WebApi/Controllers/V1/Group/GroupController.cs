@@ -2,7 +2,7 @@
 using KetCRM.Application.Models.Groups;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KetCRM.WebApi.Controllers.Group
+namespace KetCRM.WebApi.Controllers.V1.Group
 {
     [ApiVersion("1.0")]
     public class GroupController : ApiControllerBase

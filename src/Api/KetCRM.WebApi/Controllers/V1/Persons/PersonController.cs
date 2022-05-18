@@ -3,7 +3,7 @@ using KetCRM.Application.Models.Persons;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
-namespace KetCRM.WebApi.Controllers.Persons
+namespace KetCRM.WebApi.Controllers.V1.Persons
 {
     [ApiVersion("1.0")]
     public class PersonController : ApiControllerBase
