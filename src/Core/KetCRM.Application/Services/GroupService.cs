@@ -101,7 +101,7 @@ namespace KetCRM.Application.Services
                 return Result<Guid>.Failure("Группа не найдена");
             }
 
-            var newGroup = _mapper.Map<Group>(GroupDto);
+            group = _mapper.Map<Group>(GroupDto);
 
             _context.Groups.Update(group);
             await _context.SaveChangesAsync();

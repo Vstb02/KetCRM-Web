@@ -101,12 +101,12 @@ namespace KetCRM.Application.Services
                 return Result<Guid>.Failure($"Пользователь не найден");
             }
 
-            var newPerson = _mapper.Map<Person>(personDto);
+            person = _mapper.Map<Person>(personDto);
 
-            _context.Persons.Update(newPerson);
+            _context.Persons.Update(person);
             await _context.SaveChangesAsync();
 
-            return Result<Guid>.Success(newPerson.Id);
+            return Result<Guid>.Success(person.Id);
         }
     }
 }
