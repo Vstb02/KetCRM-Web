@@ -11,6 +11,9 @@ namespace KetCRM.Application.Models.Specializations
     /// </summary>
     public class SpecializationListDto
     {
+        /// <summary>
+        /// Список специализаций
+        /// </summary>
         public IList<SpecializationDto> List { get; set; } = new List<SpecializationDto>();
     }
 }
