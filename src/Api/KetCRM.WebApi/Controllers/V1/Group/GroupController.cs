@@ -20,7 +20,7 @@ namespace KetCRM.WebApi.Controllers.V1.Group
         /// <summary>
         /// Создание нового группы
         /// </summary>
-        /// <param name="createPerson"></param>
+        /// <param name="createGroup"></param>
         /// <returns>Возвращает id созданного объекта Group</returns>
         [HttpPost("CreateGroup")]
         public async Task<IActionResult> CreateGroup([FromBody] CreateGroupDto createGroup)
@@ -62,7 +62,7 @@ namespace KetCRM.WebApi.Controllers.V1.Group
         /// <summary>
         /// Обновление данных группы
         /// </summary>
-        /// <param name="updatePerson"></param>
+        /// <param name="updateGroupDto"></param>
         /// <param name="Id"></param>
         /// <returns>Id группы</returns>
         [HttpPut("UpdateGroup/{Id}")]
