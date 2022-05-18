@@ -9,7 +9,7 @@ namespace KetCRM.Application.Models.Departments
     /// <summary>
     /// Однолвение данных отделения
     /// </summary>
-    public class UpdateDepartmentsDto
+    public class UpdateDepartmentDto
     {
         /// <summary>
         /// Название отделения

@@ -10,7 +10,7 @@ namespace KetCRM.Application.Models.Departments
     /// <summary>
     /// Создание отделения
     /// </summary>
-    public class CreateDepartmentsDto
+    public class CreateDepartmentDto
     {
         /// <summary>
         /// Название отделения
