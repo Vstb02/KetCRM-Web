@@ -23,6 +23,17 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddPersistence(config);
 builder.Services.AddApplication();
 
+builder.Services.AddApiVersioning(options =>
+{
+    options.ReportApiVersions = true;
+});
+
+builder.Services.AddVersionedApiExplorer(options =>
+{
+    options.GroupNameFormat = "'v'VVV";
+    options.SubstituteApiVersionInUrl = true;
+});
+
 var app = builder.Build();
 
 using (var serviceScope = app.Services.CreateScope())

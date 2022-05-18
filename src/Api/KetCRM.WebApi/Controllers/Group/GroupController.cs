@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KetCRM.WebApi.Controllers.Group
 {
+    [ApiVersion("1.0")]
     public class GroupController : ApiControllerBase
     {
         private readonly IGroupService _groupService;

@@ -5,6 +5,7 @@ using Serilog;
 
 namespace KetCRM.WebApi.Controllers.Persons
 {
+    [ApiVersion("1.0")]
     public class PersonController : ApiControllerBase
     {
         private readonly IPersonService _personService;
