@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KetCRM.Application.Models.Departments;
 using KetCRM.Application.Models.Groups;
 using KetCRM.Application.Models.Persons;
 using KetCRM.Domain.Entities;
@@ -16,6 +17,10 @@ namespace KetCRM.Application.Common.Mapping
             CreateMap<CreateGroupDto, Group>();
             CreateMap<UpdateGroupDto, Group>();
             CreateMap<GroupDto, Group>().ReverseMap();
+
+            CreateMap<CreateDepartmentDto, Department>();
+            CreateMap<UpdateDepartmentDto, Department>();
+            CreateMap<DepartmentDto, Department>().ReverseMap();
         }
     }
 }
