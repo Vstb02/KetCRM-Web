@@ -86,7 +86,7 @@ namespace KetCRM.WebApi.Controllers.V1.Specialization
         /// </summary>
         /// <returns>Список специализаций</returns>
         [HttpGet("GetAllSpecialization")]
-        public async Task<IActionResult> GetAllPerson()
+        public async Task<IActionResult> GetAllSpecialization()
         {
             try
             {
