@@ -25,9 +25,17 @@ namespace KetCRM.WebApi.Controllers.V1.Specialization
         [HttpPost("CreateSpecialization")]
         public async Task<IActionResult> CreateSpecialization([FromBody] CreateSpecializationDto createSpecialization)
         {
-            var result = await _specializationService.CreateSpecialization(createSpecialization);
+            try
+            {
+                var result = await _specializationService.CreateSpecialization(createSpecialization);
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(500, "Произошла ошибка при попытке создать специализацию");
+            }
         }
 
         /// <summary>
@@ -38,9 +46,17 @@ namespace KetCRM.WebApi.Controllers.V1.Specialization
         [HttpDelete("DeleteSpecialization/{Id}")]
         public async Task<IActionResult> DeleteSpecialization(Guid Id)
         {
-            var result = await _specializationService.DeleteSpecialization(Id);
+            try
+            {
+                var result = await _specializationService.DeleteSpecialization(Id);
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(500, "Произошла обшибка при попытке удалить специализацию");
+            }
         }
 
         /// <summary>
@@ -52,9 +68,17 @@ namespace KetCRM.WebApi.Controllers.V1.Specialization
         [HttpPut("UpdateSpecialization/{Id}")]
         public async Task<IActionResult> UpdatePerson([FromBody] UpdateSpecializationDto updateSpecialization, Guid Id)
         {
-            var result = await _specializationService.UpdateSpecialization(updateSpecialization, Id);
+            try
+            {
+                var result = await _specializationService.UpdateSpecialization(updateSpecialization, Id);
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(500, "Произошла ошибка при попытке обновления данных специализации");
+            }
         }
 
         /// <summary>
@@ -64,9 +88,17 @@ namespace KetCRM.WebApi.Controllers.V1.Specialization
         [HttpGet("GetAllSpecialization")]
         public async Task<IActionResult> GetAllPerson()
         {
-            var result = await _specializationService.GetAllSpecialization();
+            try
+            {
+                var result = await _specializationService.GetAllSpecialization();
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(500, "Произошла ошибка при попытке получения данных специализации");
+            }
         }
 
         /// <summary>
@@ -77,9 +109,17 @@ namespace KetCRM.WebApi.Controllers.V1.Specialization
         [HttpGet("GetSpecializationById/{Id}")]
         public async Task<IActionResult> GetSpecializationById(Guid Id)
         {
-            var result = await _specializationService.GetSpecializationById(Id);
+            try
+            {
+                var result = await _specializationService.GetSpecializationById(Id);
 
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                return StatusCode(500, "Произошла ошибка при попоытке получения данных специализации");
+            }
         }
     }
 }
