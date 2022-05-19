@@ -25,17 +25,9 @@ namespace KetCRM.WebApi.Controllers.V1.Department
         [HttpPost("CreateDepartment")]
         public async Task<IActionResult> CreateDepartment([FromBody] CreateDepartmentDto createDepartment)
         {
-            try
-            {
-                var result = await _departmentService.CreateDepartment(createDepartment);
+            var result = await _departmentService.CreateDepartment(createDepartment);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попытке создать отделение");
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -46,17 +38,9 @@ namespace KetCRM.WebApi.Controllers.V1.Department
         [HttpDelete("DeleteDepartment/{Id}")]
         public async Task<IActionResult> DeleteDepartment(Guid Id)
         {
-            try
-            {
-                var result = await _departmentService.DeleteDepartment(Id);
+            var result = await _departmentService.DeleteDepartment(Id);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла обшибка при попытке удалить отделение");
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -68,17 +52,9 @@ namespace KetCRM.WebApi.Controllers.V1.Department
         [HttpPut("UpdateDepartment/{Id}")]
         public async Task<IActionResult> UpdateDepartment([FromBody] UpdateDepartmentDto updateDepartment, Guid Id)
         {
-            try
-            {
-                var result = await _departmentService.UpdateDepartment(updateDepartment, Id);
+            var result = await _departmentService.UpdateDepartment(updateDepartment, Id);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попытке обновления данных отделения");
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -88,17 +64,9 @@ namespace KetCRM.WebApi.Controllers.V1.Department
         [HttpGet("GetAllDepartment")]
         public async Task<IActionResult> GetAllDepartment()
         {
-            try
-            {
-                var result = await _departmentService.GetAllDepartment();
+            var result = await _departmentService.GetAllDepartment();
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попытке получения данных отделения");
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -109,17 +77,9 @@ namespace KetCRM.WebApi.Controllers.V1.Department
         [HttpGet("GetDepartmentById/{Id}")]
         public async Task<IActionResult> GetDepartmentById(Guid Id)
         {
-            try
-            {
-                var result = await _departmentService.GetDepartmentById(Id);
+            var result = await _departmentService.GetDepartmentById(Id);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попоытке получения данных отделения");
-            }
+            return Ok(result);
         }
     }
 }

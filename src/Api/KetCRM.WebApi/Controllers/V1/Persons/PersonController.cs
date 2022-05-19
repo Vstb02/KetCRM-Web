@@ -26,17 +26,9 @@ namespace KetCRM.WebApi.Controllers.V1.Persons
         [HttpPost("CreatePerson")]
         public async Task<IActionResult> CreatePerson([FromBody]CreatePersonDto createPerson)
         {
-            try
-            {
-                var result = await _personService.CreatePerson(createPerson);
+            var result = await _personService.CreatePerson(createPerson);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попытке создать пользователя");
-            }
+            return Ok(result);
         }
 
         /// <summary>

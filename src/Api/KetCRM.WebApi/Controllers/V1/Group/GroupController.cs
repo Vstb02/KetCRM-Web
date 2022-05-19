@@ -25,17 +25,9 @@ namespace KetCRM.WebApi.Controllers.V1.Group
         [HttpPost("CreateGroup")]
         public async Task<IActionResult> CreateGroup([FromBody] CreateGroupDto createGroup)
         {
-            try
-            {
-                var result = await _groupService.CreateGroup(createGroup);
+            var result = await _groupService.CreateGroup(createGroup);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попытке создать группу");
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -46,17 +38,9 @@ namespace KetCRM.WebApi.Controllers.V1.Group
         [HttpDelete("DeleteGroup/{Id}")]
         public async Task<IActionResult> DeleteGroup(Guid Id)
         {
-            try
-            {
-                var result = await _groupService.DeleteGroup(Id);
+            var result = await _groupService.DeleteGroup(Id);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла обшибка при попытке удалить группу");
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -68,17 +52,9 @@ namespace KetCRM.WebApi.Controllers.V1.Group
         [HttpPut("UpdateGroup/{Id}")]
         public async Task<IActionResult> UpdatePerson([FromBody] UpdateGroupDto updateGroup, Guid Id)
         {
-            try
-            {
-                var result = await _groupService.UpdateGroup(updateGroup, Id);
+            var result = await _groupService.UpdateGroup(updateGroup, Id);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попытке обновления данных группы");
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -88,17 +64,9 @@ namespace KetCRM.WebApi.Controllers.V1.Group
         [HttpGet("GetAllGroup")]
         public async Task<IActionResult> GetAllPerson()
         {
-            try
-            {
-                var result = await _groupService.GetAllGroup();
+            var result = await _groupService.GetAllGroup();
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попытке получения данных группы");
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -109,17 +77,9 @@ namespace KetCRM.WebApi.Controllers.V1.Group
         [HttpGet("GetGroupById/{Id}")]
         public async Task<IActionResult> GetGroupById(Guid Id)
         {
-            try
-            {
-                var result = await _groupService.GetGroupById(Id);
+            var result = await _groupService.GetGroupById(Id);
 
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                return StatusCode(500, "Произошла ошибка при попоытке получения данных группы");
-            }
+            return Ok(result);
         }
     }
 }
