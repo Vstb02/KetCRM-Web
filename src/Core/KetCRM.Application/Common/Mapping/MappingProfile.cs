@@ -2,6 +2,7 @@
 using KetCRM.Application.Models.Departments;
 using KetCRM.Application.Models.Groups;
 using KetCRM.Application.Models.Persons;
+using KetCRM.Application.Models.Specializations;
 using KetCRM.Domain.Entities;
 
 namespace KetCRM.Application.Common.Mapping
@@ -21,6 +22,10 @@ namespace KetCRM.Application.Common.Mapping
             CreateMap<CreateDepartmentDto, Department>();
             CreateMap<UpdateDepartmentDto, Department>();
             CreateMap<DepartmentDto, Department>().ReverseMap();
+
+            CreateMap<CreateSpecializationDto, Specialization>();
+            CreateMap<UpdateSpecializationDto, Specialization>();
+            CreateMap<SpecializationDto, Specialization>().ReverseMap();
         }
     }
 }
