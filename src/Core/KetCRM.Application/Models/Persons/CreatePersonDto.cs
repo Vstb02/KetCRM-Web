@@ -125,5 +125,33 @@ namespace KetCRM.Application.Models.Persons
         /// </summary>
         [Display(Name = "Роль")]
         public Role Role { get; set; }
+        /// <summary>
+        /// Страна
+        /// </summary>
+        public string? Country { get; set; }
+        /// <summary>
+        /// Область
+        /// </summary>
+        public string? Region { get; set; }
+        /// <summary>
+        /// Город
+        /// </summary>
+        public string? City { get; set; }
+        /// <summary>
+        /// Улица
+        /// </summary>
+        public string? Street { get; set; }
+        /// <summary>
+        /// Дом
+        /// </summary>
+        public string? House { get; set; }
+        /// <summary>
+        /// Номер квартиры
+        /// </summary>
+        public string? Flat { get; set; }
+        /// <summary>
+        /// Фактический адрес
+        /// </summary>
+        public bool? ActualAddress { get; set; }
     }
 }

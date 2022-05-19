@@ -34,6 +34,21 @@ namespace KetCRM.Application.Services
             var person = _mapper.Map<Person>(personDto);
 
             await _context.Persons.AddAsync(person);
+
+            var address = new Address()
+            {
+                Id = Guid.NewGuid(),
+                City = personDto.City,
+                ActualAddress = personDto.ActualAddress,
+                Country = personDto.Country,
+                Flat = personDto.Flat,
+                House = personDto.House,
+                Region = personDto.Region,
+                Street = personDto.Street,
+                PersonId = person.Id
+            };
+
+            await _context.Addresses.AddAsync(address);
             await _context.SaveChangesAsync();
 
             return Result<Guid>.Success(person.Id);
@@ -70,7 +85,22 @@ namespace KetCRM.Application.Services
 
             foreach (var Item in person)
             {
-                personList.PersonList.Add(_mapper.Map<PersonDto>(Item));
+                var address = await _context.Addresses.Where(x => x.PersonId == Item.Id).FirstOrDefaultAsync();
+
+                var personItem = _mapper.Map<PersonDto>(Item);
+
+                if (address != null)
+                {
+                    personItem.ActualAddress = address.ActualAddress;
+                    personItem.Country = address.Country;
+                    personItem.City = address.City;
+                    personItem.House = address.House;
+                    personItem.Flat = address.Flat;
+                    personItem.Region = address.Region;
+                    personItem.Street = address.Street;
+                }
+
+                personList.PersonList.Add(personItem);
             }
 
             return Result<PersonListDto>.Success(personList);
@@ -86,7 +116,20 @@ namespace KetCRM.Application.Services
                 return Result<PersonDto>.Failure($"Пользователь не найден");
             }
 
+            var address = await _context.Addresses.Where(x => x.PersonId == person.Id).FirstOrDefaultAsync();
+
             var personDto = _mapper.Map<PersonDto>(person);
+
+            if(address != null)
+            {
+                personDto.ActualAddress = address.ActualAddress;
+                personDto.Country = address.Country;
+                personDto.City = address.City;
+                personDto.House = address.House;
+                personDto.Flat = address.Flat;
+                personDto.Region = address.Region;
+                personDto.Street = address.Street;  
+            }
 
             return Result<PersonDto>.Success(personDto);
         }
@@ -99,6 +142,19 @@ namespace KetCRM.Application.Services
             {
                 _logger.LogWarning($"Сущность \"{nameof(Person)}\" ({PersonId}) не найдена.");
                 return Result<Guid>.Failure($"Пользователь не найден");
+            }
+
+            var address = await _context.Addresses.Where(x => x.PersonId == person.Id).FirstOrDefaultAsync();
+
+            if (address != null)
+            {
+                address.ActualAddress = personDto.ActualAddress;
+                address.Country = personDto.Country;
+                address.City = personDto.City;
+                address.House = personDto.House;
+                address.Flat = personDto.Flat;
+                address.Region = personDto.Region;
+                address.Street = personDto.Street;
             }
 
             person = _mapper.Map<Person>(personDto);
